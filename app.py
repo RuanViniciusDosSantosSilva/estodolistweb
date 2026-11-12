@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, session, redirect
+from database import consultar_tarefas
 
 app = Flask(__name__)
 app.secret_key = "ruanvinicius"
@@ -9,11 +10,13 @@ ADMIN_SENHA = "123456"
 
 @app.route("/") # HomePage- Página Inicial
 def home():
+    
     if "login" not in session:
         return redirect("/login")
 
     # Usuário logado
-    return render_template("index.html")
+    tarefas = consultar_tarefas
+    return render_template("index.html", tarefas=tarefas)   
 
 # -----------------------------------------
 # Rota de Login
