@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, session, redirect
 
 app = Flask(__name__)
-app.secret_key = "joaopaulo"
+app.secret_key = "ruanvinicius"
 
 # Dados de acesso do ADMIN
-ADMIN_EMAIL = "jplepinsk@gmail.com"
+ADMIN_EMAIL = "ruan.silva.senai@gmail.com"
 ADMIN_SENHA = "123456"
 
 @app.route("/") # HomePage- Página Inicial
