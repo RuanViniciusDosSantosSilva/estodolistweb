@@ -9,9 +9,16 @@
         <li class="bg-white rounded-xl shadow p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div class="space-y-2 sm:flex-1">
             <span class="block font-medium">{{ tarefa.nome_tarefa }}</span>
-            <span class="block text-sm text-slate-500">
-              {{ tarefa.categoria }} .  {{ tarefa.data_prazo.srtftime("%d/%m/%Y") }}
-            </span>
+            {# descrição aqui #}
+            <div class="flex flex-wrap items-center gap-2 text-sm">
+              <span class="px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                {{tarefa.categoria}}
+              </span>
+              <span class="text-slate-500">
+                {{tarefa.data_prazo.strftime("%d/%m/%Y")}}
+              </span>
+              {# prioridades aqui #}
+            </div>
           </div>
           {# botões aqui #}
         </li>
