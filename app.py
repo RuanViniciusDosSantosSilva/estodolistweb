@@ -15,7 +15,7 @@ def home():
         return redirect("/login")
 
     # Usuário logado
-    tarefas = consultar_tarefas
+    tarefas = consultar_tarefas()
     return render_template("index.html", tarefas=tarefas)   
 
 # -----------------------------------------
