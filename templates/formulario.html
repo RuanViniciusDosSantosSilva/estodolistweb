@@ -1,50 +1,46 @@
 {% extends "base.html" %}
 {% block title %}Tarefa | EsToDoList{% endblock %}
 {% block content %}
-<main class="max-w-xl mx-auto px-4 py-8">
-    <form action="/adicionar" method="post" class="bg-white rounded-xl shadow p-6 space-y-4">
-        <h2 class="text-xl font-bold">Nova tarefa</h2>
-        {% if erros %}
-        <ul class="bg-red-100 text-red-700 rounded-lg px-4 py-3 space-y-1">
-            {% for erro in erros %}
-            <li>{{ erro }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        <label for="nome_tarefa" class="block font-medium">
-            Nome
-        </label>
-        <input type="text" id="nome_tarefa" name="nome_tarefa" value="{{ dados.nome_tarefa or '' }}" required
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-400">
-        <label for="descricao" class="block font-medium">
-            Descrição
-        </label>
-        <textarea id="descricao" name="descricao" rows="3"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-400">{{ dados.descricao or ""
-            }}</textarea>
+    <main class="max-w-xl mx-auto px-4 py-8">
+        <form action="/adicionar" method="post" class="bg-white rounded-xl shadow p-6 space-y-4">
+            <h2 class="text-xl font-bold">Nova Tarefa</h2>
+            {% if erros %}
+                <ul class="bg-red-100 text-red-700 rounded-lg px-4 py-3 space-y-1">
+                    {% for erro in erros %}
+                        <li>{{ erro }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
-        <label for="categoria" class="block font-medium">Categoria</label>
-        <select id="categoria" name="categoria" required class="w-full border rounded-lg p-3 bg-white">
-            {% for c in categorias %}
-            <option value="{{ c }}" {% if dados.categoria==c %} selected {% endif %}>
-                {{ c }}
-            </option>
-            {% endfor %}
-        </select>
-        <label for="data_prazo" class="block font-medium">Prazo</label>
-        <input type="date" id="data_prazo" name="data_prazo" value="{{ dados.data_prazo }}" required
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-400">
-        <label for="prioridade" class="block font-medium">Prioridade</label>
-        <select id="prioridade" name="prioridade" required class="w-full border rounded-lg p-3 bg-white">
-            <option value="ALTA" {% if dados.prioridade=="ALTA" %} selected {% endif %}>Alta</option>
-            <option value="MEDIA" {% if dados.prioridade=="MEDIA" %} selected {% endif %}>Média</option>
-            <option value="Baixa" {% if dados.prioridade=="Baixa" %} selected {% endif %}>Baixa</option>
+            <label for="nome_tarefa" class="block font-medium">Nome</label>
+            <input type="text" id="nome_tarefa" name="nome_tarefa"
+            value="{{dados.nome_tarefa}}" required class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-400">
 
-        </select>
-        <div class="flex gap-2">
-            <button type="submit" class="flex-1 bg-indigo-600 text-white rounded-lg p-3 font-semibold">Salvar</button>
-            <a href="/" class="flex-1 text-center rounded-lg p-3 bg-slate-200">Cancelar </a>
-        </div>
-    </form>
-</main>
+            <label for="descricao" class="block font-medium">Descrição</label>
+            <textarea id="descricao" name="descricao" rows="3" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-400">{{ dados.descricao or "" }}</textarea>
+
+            <label for="categoria" class="block font-medium">categoria</label>
+            <select name="categoria" id="categoria" required class="w-full border rounded-lg p-3 bg-white">
+                {% for c in categorias %}
+                    <option value="{{ c }}" {% if dados.categoria == c %}selected{% endif %}>{{ c }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="data_prazo" class="block font-medium">Prazo</label>
+            <input type="date" id="data_prazo" name="data_prazo"
+            values="{{ dados.data_prazo }}" required class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-400">
+
+            <label for="prioridade" class="block font-medium">Prioridade</label>
+            <select name="prioridade" id="prioridade" required class="w-full border rounded-lg p-3 bg-white">
+                <option value="ALTA"{% if dados.prioridade == "ALTA" %} selected {% endif %}>Alta</option>
+                <option value="MEDIA" {% if dados.prioridade == "MEDIA" %} selected {% endif %}>Média</option>
+                <option value="BAIXA" {% if dados.prioridade == "BAIXA" %} selected {% endif %}>Baixa</option>
+            </select>
+
+            <div class="flex gap-2">
+                <button type="submit" class="flex-1 bg-indigo-600 text-white rounded-lg p-3 font-semibold">Salvar</button>
+                <a href="/" class="flex-1 text-center rounded-lg p-3 bg-slate-200">Cancelar</a>
+            </div>
+        </form>
+    </main>
 {% endblock %}
