@@ -49,6 +49,17 @@
             </span>
           </div>
         </div>
+        <div class="flex gap-2">
+          {% if tarefa.status != "Concluída" %}
+            <form action="/concluir/{{ tarefa.idtarefa }}" method="post" class="flex-1 sm-flex-none">
+              <button type="submit" class="w-full px-4 py-3 rounded-lg bg-green-100 text-green-700">Concluir</button>
+            </form>
+          {% endif %}
+          {# editar aqui #}
+          <a href="/excluir/{{ tarefa.idtarefa }}" class="flex-1 sm:flex-none px-4 py-3 rounded-lg text-center bg-red-100 text-red-700">
+            Excluir
+          </a>
+        </div>
       </li>
       {% else %}
       <li class="bg-white rounded-xl shadow p-6 text-center text-slate-500">
