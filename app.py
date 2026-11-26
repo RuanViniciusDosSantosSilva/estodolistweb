@@ -9,17 +9,15 @@ app.secret_key = "gustavo"
     
 
 # Dados de acesso do ADMIN
-ADMIN_EMAIL = "gustavo.oller.senai@gmail.com"
+ADMIN_EMAIL = "ruan.silva.senai@gmail.com"
 ADMIN_SENHA = "123456"
 
 CATEGORIAS = ["Escola", "Trabalho", "Projetos","Pessoal", "Saúde", "Outros"]
 
-def validar_tarefa (nome, descricao, categoria, prazo,prioridade):
+def validar_tarefa (nome, descricao, categoria, prazo, prioridade):
     erros = []
     if len (nome) < 5 or len (nome) > 30 or nome.isdigit():
-        erros.apend("Nome: de 5 a 30 caracteres, não só numeros.")
-    if len (descricao) > 100:
-        erros.append ("Nome: de 5 a 30 caracteres, não só numeros.")
+        erros.append("Nome: de 5 a 30 caracteres, não só numeros.")
     if len(descricao) > 100:
         erros.append("Descrição: no maximo 100 caracteres.")
     if len (categoria) < 5 or len (categoria) > 30 or categoria.isdigit ():
